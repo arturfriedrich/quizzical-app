@@ -6,35 +6,37 @@ import Question from "./components/Question"
 export default function App() {
 
     const [running, setRunning] = useState(false)
-    const [allQuestions, setAllQuestions] = useState([])
+    const [questions, setQuestions] = useState([])
 
     function startQuiz() {
         setRunning(prevState => !prevState)
     }
 
     useEffect(() => {
-        fetch("https://opentdb.com/api.php?amount=5")
+        fetch("https://opentdb.com/api.php?amount=5&difficulty=easy&type=multiple")
             .then(response => response.json())
-            .then(data => {
-                setAllQuestions(data.results)
-            })
-    }, [])
+            .then(data => setQuestions(data.results))
+    }, [running])
 
-    const questionsElement = allQuestions.map(q => {
-        console.log(q.question)
+    const questionsElement = questions.map(ques => {
+        let questionId = nanoid()
         return (
             <Question
-                key={nanoid()}
-                question={q.question}
+                key={questionId}
+                question={ques.question}
+                correctAnswer={ques.correct_answer}
+                incorrectAnswers={ques.incorrect_answers}
             />
         )
     })
+
+
 
     return (
         <main>
             {
                 running ?
-                    { questionsElement }
+                    <div className="questions">{questionsElement}</div>
                     :
                     <section className="start-screen">
                         <h1 className="start-title">Quizzical</h1>
