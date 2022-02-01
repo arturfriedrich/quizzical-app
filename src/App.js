@@ -1,7 +1,11 @@
 import React from "react"
 
+import Start from "./components/Start"
+
 export default function App() {
     return (
-        <h1>Hello World!</h1>
+        <>
+            <Start />
+        </>
     )
 }
