@@ -8,7 +8,7 @@ export default function Question(props) {
 
     useEffect(() => {
         setAllAnswers([correctAnswer, ...incorrectAnswers].sort())
-    })
+    }, [])
 
     const answerElements = allAnswers.map(answer => {
         return (
