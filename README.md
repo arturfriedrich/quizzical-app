@@ -7,7 +7,7 @@
 
 ### Website to the current version
 
-[Website](arturfriedrich.github.io/quizzical-app/)
+[Website](https://arturfriedrich.github.io/quizzical-app/)
 
 ## Screenshot
 
