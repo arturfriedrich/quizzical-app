@@ -11,7 +11,11 @@
 
 ## Screenshot
 
-** screenshot **
+![image](https://user-images.githubusercontent.com/67378210/152173966-d94a45f0-bdf3-4d72-8dd8-312adae7857d.png)
+![image](https://user-images.githubusercontent.com/67378210/152174028-c5d3b980-4e6b-4579-958f-9868783730ea.png)
+![image](https://user-images.githubusercontent.com/67378210/152174178-04b1f550-4db5-4da9-a90f-589695d5b306.png)
+
+
 
 ## My process
 
