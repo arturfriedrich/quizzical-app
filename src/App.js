@@ -7,8 +7,8 @@ export default function App() {
 
     const [running, setRunning] = useState(false)
     const [questions, setQuestions] = useState([])
-    const [score, setScore] = useState([])
     const [isSubmited, setIsSubmited] = useState(false)
+    const [score, setScore] = useState(0)
 
     function startQuiz() {
         setRunning(true)
@@ -26,6 +26,7 @@ export default function App() {
             questions.map(quest => {
                 if (quest.question === quest.correct_answer) {
                     setScore(prevScore => prevScore + 1)
+                    console.log(score)
                 }
             })
         }
@@ -62,7 +63,8 @@ export default function App() {
                     <>
                         <div className="questions-wrapper">
                             <div className="questions">{questionsElement}</div>
-                            <button className="check-answers" onClick={checkAnswers}>Check answers</button>
+                            {isSubmited && <p className='quiz__result'>You scored {score}/5 correct answers</p>}
+                            <button className="check-answers" onClick={checkAnswers}>{isSubmited ? "Play again" : "Check answers"}</button>
                         </div>
                     </>
                     :
