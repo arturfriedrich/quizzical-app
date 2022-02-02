@@ -3,6 +3,9 @@
     --blue: #f5f7fb;
     --medium-blue: #4D5B9E;
     --dark-blue: #293264;
+    --chosen: #D6DBF5;
+    --correct: #94D7A2;
+    --wrong: #F8BCBC;
 }
 
 * {
@@ -111,4 +114,16 @@ html, body {
 
 .questions {
     width: 80%;
+}
+
+.chosen {
+    background-color: var(--chosen);
+}
+
+.correct {
+    background-color: var(--correct);
+}
+
+.wrong {
+    background-color: var(--wrong);
 }

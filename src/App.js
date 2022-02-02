@@ -7,9 +7,11 @@ export default function App() {
 
     const [running, setRunning] = useState(false)
     const [questions, setQuestions] = useState([])
+    const [score, setScore] = useState([])
+    const [isSubmited, setIsSubmited] = useState(false)
 
     function startQuiz() {
-        setRunning(prevState => !prevState)
+        setRunning(true)
     }
 
     useEffect(() => {
@@ -17,6 +19,26 @@ export default function App() {
             .then(response => response.json())
             .then(data => setQuestions(data.results))
     }, [running])
+
+    useEffect(() => {
+        setScore(0)
+        if (isSubmited) {
+            questions.map(quest => {
+                if (quest.question === quest.correct_answer) {
+                    setScore(prevScore => prevScore + 1)
+                }
+            })
+        }
+    }, [isSubmited])
+
+    function checkAnswers() {
+        if (isSubmited) {
+            setIsSubmited(false)
+            setRunning(false)
+        } else {
+            setIsSubmited(true)
+        }
+    }
 
     const questionsElement = questions.map(ques => {
         let questionId = nanoid()
@@ -26,6 +48,7 @@ export default function App() {
                 question={ques.question}
                 correctAnswer={ques.correct_answer}
                 incorrectAnswers={ques.incorrect_answers}
+                isSubmited={isSubmited}
             />
         )
     })
@@ -39,7 +62,7 @@ export default function App() {
                     <>
                         <div className="questions-wrapper">
                             <div className="questions">{questionsElement}</div>
-                            <button className="check-answers">Check answers</button>
+                            <button className="check-answers" onClick={checkAnswers}>Check answers</button>
                         </div>
                     </>
                     :
