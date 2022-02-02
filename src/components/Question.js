@@ -5,11 +5,15 @@ export default function Question(props) {
 
     const { question, correctAnswer, incorrectAnswers, isSubmited } = props
     const [allAnswers, setAllAnswers] = useState([])
-    const [chosen, setChosen] = useState("")
+    const [chosen, setChosen] = useState(localStorage.getItem(question) || "")
+
+    useEffect(() => {
+        localStorage.setItem(question, chosen)
+    })
 
     useEffect(() => {
         setAllAnswers([correctAnswer, ...incorrectAnswers].sort())
-    }, [])
+    }, [correctAnswer, incorrectAnswers])
 
     function handleClick(event) {
         if (event.target.classList.contains("chosen")) {
@@ -32,7 +36,7 @@ export default function Question(props) {
                     :
                     <button
                         key={answer}
-                        className={` chosen question-answer
+                        className={` submitted question-answer
                         ${correctAnswer === answer ? "correct" : ""}
                         ${chosen === answer && incorrectAnswers.some(ans => ans === chosen) ? "wrong" : ""}
                     `}
@@ -45,7 +49,7 @@ export default function Question(props) {
 
     return (
         <section className="question">
-            <p className="question-title">{decode(props.question)}</p>
+            <p className="question-title">{decode(question)}</p>
             <div className="answers">{answerElements}</div>
             <hr />
         </section>

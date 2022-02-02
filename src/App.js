@@ -6,8 +6,8 @@ import Question from "./components/Question"
 export default function App() {
 
     const [running, setRunning] = useState(false)
-    const [questions, setQuestions] = useState([])
     const [isSubmited, setIsSubmited] = useState(false)
+    const [questions, setQuestions] = useState(() => JSON.parse(localStorage.getItem("questions")) || [])
     const [score, setScore] = useState(0)
 
     function startQuiz() {
@@ -21,16 +21,19 @@ export default function App() {
     }, [running])
 
     useEffect(() => {
+        localStorage.setItem("questions", JSON.stringify(questions))
+    }, [questions])
+
+    useEffect(() => {
         setScore(0)
         if (isSubmited) {
             questions.map(quest => {
-                if (quest.question === quest.correct_answer) {
+                if (localStorage.getItem(quest.question) === quest.correct_answer) {
                     setScore(prevScore => prevScore + 1)
-                    console.log(score)
                 }
             })
         }
-    }, [isSubmited])
+    }, [isSubmited, questions, score])
 
     function checkAnswers() {
         if (isSubmited) {

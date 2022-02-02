@@ -120,8 +120,13 @@ html, body {
     background-color: var(--chosen);
 }
 
+.submitted {
+    opacity: .5;
+}
+
 .correct {
     background-color: var(--correct);
+    opacity: 1;
 }
 
 .wrong {
