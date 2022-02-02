@@ -17,15 +17,18 @@ html, body {
     height: 100vh;
 }
 
-.start-screen {
+.start-screen, .questions-wrapper {
     background-color: var(--blue);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    height: 600px;
     width: 600px;
+}
+
+.start-screen {
+    height: 600px;
 }
 
 .start-title {
@@ -48,7 +51,7 @@ html, body {
     color: var(--dark-blue);
 }
 
-.start-button {
+.start-button, .check-answers {
     width: 193px;
     height: 52px;
     border: none;
@@ -64,6 +67,48 @@ html, body {
     color: var(--blue);
 }
 
-.start-button:hover {
+.check-answers {
+    width: 120px;
+    height: 35px;
+    margin: 1.5em 0;
+
+    font-size: 14px;
+
+    border-radius: 10px;
+}
+
+.start-button:hover,
+.check-answers:hover {
     background-color: var(--dark-blue);
+}
+
+.question-title {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: var(--dark-blue);
+}
+
+.question-answer {
+    border: 0.794239px solid var(--medium-blue);
+    box-sizing: border-box;
+    border-radius: 7.94239px;
+    background-color: var(--blue);
+    padding: .25em 1.25em;
+    margin-right: 1.5em;
+    margin-bottom: 1em;
+
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 12px;
+
+    text-align: center;
+
+    color: var(--dark-blue);
+}
+
+.questions {
+    width: 80%;
 }

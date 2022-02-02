@@ -36,7 +36,12 @@ export default function App() {
         <main>
             {
                 running ?
-                    <div className="questions">{questionsElement}</div>
+                    <>
+                        <div className="questions-wrapper">
+                            <div className="questions">{questionsElement}</div>
+                            <button className="check-answers">Check answers</button>
+                        </div>
+                    </>
                     :
                     <section className="start-screen">
                         <h1 className="start-title">Quizzical</h1>
